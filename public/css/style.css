@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+h1{
+    font-family: 'Bree Serif', serif;
+    color: #65617D;
+}
+
+nav{
+    height: 8vh;
+}
+
+.card{
+    overflow: hidden;
+    align-items: center;
+    padding: 2vh;
+   margin-top: 2vh;        
+}
+
+.box-card{
+ margin-right: 5vh;
+}
+
+#icon1, #icon2, #icon3{
+    margin-left: 2vh;
+}
+
+.card{
+    max-width: 100%;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.card:hover{
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.2);
+    box-shadow: 0 0 40px -10px rgba(0,0,0,0.25);
+}
+
+ul li{
+    font-size: 4vh;
+}
+
+@media (max-width: 800px){
+    #btn-icon1, #btn-icon2, #btn-icon3{
+        visibility: hidden
+    }
+}

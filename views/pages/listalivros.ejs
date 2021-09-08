@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Biblioteca</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="btn btn-primary btn-lg mb-2" href="/" style="color: white; background-color:#6C63FF;">Voltar</a>
+            <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/cadastro" style="color: #6C63FF">Cadastrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lista-livros" style="color: #6C63FF">Lista<div class="list-group">
+                                </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #6C63FF">Pesquisar</a>
+                    </li>
+                </ul>
+
+            </div>
+            <a class="btn btn-primary btn-lg mb-2" href="/cadastro"
+                style="color: white; background-color:#6C63FF;">Cadastrar +</a>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <h1 class="mt-5 mb-5">Listagem de livros</h1>
+            </div>
+        </div>
+        <!-- INPUT PESQUISA -->
+        <div class="row">
+            <div class="col-6">
+                <form action="/pesquisa" method="POST" class="form" id="pesquisa">
+                    <div class="input-group">
+                        <input type="text" name="query" class="form-control" placeholder="Buscar por Título"
+                            title="Busca por Título">
+                        <div class="input-group-append">
+                            <div class="input-group-text form-control">
+                                <button type="submit" class="btn btn-link btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" viewBox="0 0 16 16" value="search" style="color: #6C63FF">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>ISBN</th>
+                        <th>Editora</th>
+                        <th>Publicação</th>
+                        <th>Edição</th>
+                        <th>Localização</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </thead>
+                    <tbody>
+                        <% lista_livros.forEach((livro)=> { %>
+                            <tr>
+                                <td>
+                                    <%= livro.titulo %>
+                                </td>
+                                <td>
+                                    <%= livro.autor %>
+                                </td>
+                                <td>
+                                    <%= livro.isbn %>
+                                </td>
+                                <td>
+                                    <%= livro.editora %>
+                                </td>
+                                <td>
+                                    <%= livro.anoPublicacao %>
+                                </td>
+                                <td>
+                                    <%= livro.edicao %>
+                                </td>
+                                <td>
+                                    <%= livro.localizacao %>
+                                </td>
+                                <td>
+                                    <%= livro.status %>
+                                </td>
+                                <td>
+                                    <a href="/editar/<%= livro._id %>" class="btn btn-warning">Editar</a>
+                                    <a href="/deletar-livro/<%= livro._id %>" class="btn btn-danger">Deletar</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                                <% if(lista_livros=='' ) { %>
+                                    <tr>
+                                        <td colspan="12" class="alert alert-warning">Não existem livros cadastrados</td>
+                                    </tr>
+                                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
